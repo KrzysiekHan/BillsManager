@@ -57,5 +57,13 @@ namespace DbAccess.Repository
             _context.SaveChanges();
         }
 
+        public IEnumerable<T> GetWithPredicate(Func<T, bool> predicate = null)
+        {
+            if (predicate != null)
+                return table.Where(predicate).ToList();
+            return table.ToList();
+        }
+
+
     }
 }

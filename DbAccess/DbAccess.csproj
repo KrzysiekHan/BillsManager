@@ -55,9 +55,9 @@
     <Compile Include="Entities\Bill.cs" />
     <Compile Include="Entities\BillTypeDict.cs" />
     <Compile Include="Entities\Recipient.cs" />
-    <Compile Include="Migrations\201909261417512_initial.cs" />
-    <Compile Include="Migrations\201909261417512_initial.designer.cs">
-      <DependentUpon>201909261417512_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201909280712500_initial.cs" />
+    <Compile Include="Migrations\201909280712500_initial.designer.cs">
+      <DependentUpon>201909280712500_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +75,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909261417512_initial.resx">
-      <DependentUpon>201909261417512_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909280712500_initial.resx">
+      <DependentUpon>201909280712500_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

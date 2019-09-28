@@ -16,14 +16,14 @@
                         DueDate = c.DateTime(nullable: false),
                         Periodical = c.Boolean(nullable: false),
                         Description = c.String(),
-                        BillTypeDict_BillTypeDictId = c.Int(),
-                        Recipient_RecipientId = c.Int(),
+                        RecipientId = c.Int(nullable: false),
+                        BillTypeDictId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BillId)
-                .ForeignKey("dbo.BillTypeDicts", t => t.BillTypeDict_BillTypeDictId)
-                .ForeignKey("dbo.Recipients", t => t.Recipient_RecipientId)
-                .Index(t => t.BillTypeDict_BillTypeDictId)
-                .Index(t => t.Recipient_RecipientId);
+                .ForeignKey("dbo.BillTypeDicts", t => t.BillTypeDictId, cascadeDelete: true)
+                .ForeignKey("dbo.Recipients", t => t.RecipientId, cascadeDelete: true)
+                .Index(t => t.RecipientId)
+                .Index(t => t.BillTypeDictId);
             
             CreateTable(
                 "dbo.BillTypeDicts",
@@ -51,10 +51,10 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.Bills", "Recipient_RecipientId", "dbo.Recipients");
-            DropForeignKey("dbo.Bills", "BillTypeDict_BillTypeDictId", "dbo.BillTypeDicts");
-            DropIndex("dbo.Bills", new[] { "Recipient_RecipientId" });
-            DropIndex("dbo.Bills", new[] { "BillTypeDict_BillTypeDictId" });
+            DropForeignKey("dbo.Bills", "RecipientId", "dbo.Recipients");
+            DropForeignKey("dbo.Bills", "BillTypeDictId", "dbo.BillTypeDicts");
+            DropIndex("dbo.Bills", new[] { "BillTypeDictId" });
+            DropIndex("dbo.Bills", new[] { "RecipientId" });
             DropTable("dbo.Recipients");
             DropTable("dbo.BillTypeDicts");
             DropTable("dbo.Bills");

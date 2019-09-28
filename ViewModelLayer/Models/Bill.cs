@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewModelLayer.Interfaces;
 
-namespace DbAccess.Entities
+namespace ViewModelLayer.Models
 {
-    public class Bill
+    class Bill : IBill
     {
         public int BillId { get; set; }
         public decimal DueAmount { get; set; }
         public DateTime DueDate { get; set; }
         public bool Periodical { get; set; }
         public string Description { get; set; }
-
         public int RecipientId { get; set; }
-        public Recipient Recipient { get; set; }
-
-        public int BillTypeDictId { get; set; }
-        public BillTypeDict BillTypeDict { get; set; }
+        public int BillTypeId { get; set; }
+        public IRecipient Recipient { get; set; }  
+        public IBillType BillType { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DbAccess.Repository.Interfaces
 {
-    interface IBillRepository : IGenericRepository<Bill>
+    public interface IBillRepository : IGenericRepository<Bill>
     {
     }
 }

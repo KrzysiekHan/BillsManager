@@ -14,5 +14,6 @@ namespace DbAccess.Repository
         void Update(T obj);
         void Delete(object id);
         void Save();
+        IEnumerable<T> GetWithPredicate(Func<T, bool> predicate = null);
     }
 }
