@@ -22,22 +22,44 @@ namespace ViewModelLayer.Services
 
         public void CreateRecepient(IRecipient recipient)
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<IRecipient> GetActiveRecipients()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IRecipient GetRecepient(int recipientId)
-        {
-            throw new NotImplementedException();
+            DbAccess.Entities.Recipient dbrecipient = new DbAccess.Entities.Recipient()
+            {
+                RecipientId = recipient.RecipientId,
+                CompanyName = recipient.CompanyName,
+                Account = recipient.Account,
+                Active = recipient.Active,
+                Address = recipient.Address,
+                CustomerServiceUrl = recipient.CustomerServiceUrl
+            };
+            repo.Insert(dbrecipient);
         }
 
         public void UpdateRecepient(IRecipient recipient)
         {
-            throw new NotImplementedException();
+            DbAccess.Entities.Recipient dbrecipient = this.repo.GetById(recipient.RecipientId);
+            dbrecipient.Account = recipient.Account;
+            dbrecipient.Address = recipient.Address;
+            dbrecipient.CompanyName = recipient.CompanyName;
+            dbrecipient.CustomerServiceUrl = recipient.CustomerServiceUrl;
+            dbrecipient.Active = recipient.Active;
         }
+
+        public IEnumerable<IRecipient> GetActiveRecipients()
+        {
+            var list = this.repo.GetWithPredicate(x => x.Active == true).ToList();
+            foreach (var item in list)
+            {
+                yield return factory.RecipientFactory.NewRecipient(item.RecipientId, item.CompanyName, item.Address, item.Account, item.CustomerServiceUrl, item.Active);
+
+            }
+        }
+
+        public IRecipient GetRecepient(int recipientId)
+        {
+            var recipient = this.repo.GetById(recipientId);
+            return factory.RecipientFactory.NewRecipient(recipient.RecipientId, recipient.CompanyName, recipient.Address, recipient.Account, recipient.CustomerServiceUrl, recipient.Active);
+        }
+
+
     }
 }

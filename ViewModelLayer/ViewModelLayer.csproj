@@ -50,7 +50,7 @@
     <Compile Include="Interfaces\IFactory.cs" />
     <Compile Include="Interfaces\Recipient\IRecipient.cs" />
     <Compile Include="Interfaces\Recipient\IRecipientFactory.cs" />
-    <Compile Include="Interfaces\Recipient\RecepientService.cs" />
+    <Compile Include="Interfaces\Recipient\IRecepientService.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\BillType.cs" />
     <Compile Include="Models\Recipient.cs" />

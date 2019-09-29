@@ -8,6 +8,6 @@ namespace ViewModelLayer.Interfaces.Recipient
 {
     public interface IRecipientFactory
     {
-        IRecipient NewRecipient();
+        IRecipient NewRecipient(int RecipientId ,string CompanyName, string Address, string Account, string CustomerServiceUrl, bool Active);
     }
 }
