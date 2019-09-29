@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewModelLayer.Interfaces;
 using ViewModelLayer.Interfaces.Bill;
 using ViewModelLayer.Interfaces.Recipient;
 
-namespace ViewModelLayer.Interfaces
+namespace ViewModelLayer.Factory
 {
-    public interface IFactory
+    public class Factory : IFactory
     {
-        IBillFactory BillFactory { get; }
-        IRecipientFactory RecipientFactory { get; }
+        public IBillFactory BillFactory { get; }
+
+        public IRecipientFactory RecipientFactory { get; }
     }
 }

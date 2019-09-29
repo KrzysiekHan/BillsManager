@@ -13,6 +13,6 @@ namespace ViewModelLayer.Interfaces.Bill
         void UpdateBill(IBill bill);
         IEnumerable<IBillType> GetBillTypes();
         IEnumerable<IBill> GetAllBills();
-        IEnumerable<IBill> GetBillsForMonth();
+        IEnumerable<IBill> GetBillsForMonth(int month);
     }
 }
