@@ -10,8 +10,8 @@ namespace DbAccess.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private BillManagerDbContext _context = null;
-        private DbSet<T> table = null;
+        private  readonly BillManagerDbContext _context = null;
+        private readonly DbSet<T> table = null;
 
         public GenericRepository()
         {
