@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewModelLayer.Interfaces.Recipient
 {
-    interface IRecepientService
+    public interface IRecepientService
     {
         IRecipient GetRecepient(int recipientId);
         void CreateRecepient(IRecipient recipient);

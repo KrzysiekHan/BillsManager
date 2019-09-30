@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="41,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="181,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="321,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="461,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="41,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="tbName"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="181,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="tbAddress"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="321,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="tbAccount"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="461,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="tbUrl"/>
         <Label Content="Nazwa" HorizontalAlignment="Left" Margin="41,32,0,0" VerticalAlignment="Top"/>
         <Label Content="Adres" HorizontalAlignment="Left" Margin="181,32,0,0" VerticalAlignment="Top"/>
         <Label Content="Numer konta" HorizontalAlignment="Left" Margin="321,32,0,0" VerticalAlignment="Top"/>
         <Label Content="Url" HorizontalAlignment="Left" Margin="461,32,0,0" VerticalAlignment="Top"/>
-        <Button Content="Dodaj odbiorcę" HorizontalAlignment="Left" Margin="605,60,0,0" VerticalAlignment="Top" Width="101"/>
+        <Button Content="Dodaj odbiorcę" HorizontalAlignment="Left" Margin="605,60,0,0" VerticalAlignment="Top" Width="101" Click="Button_Click"/>
         <DataGrid HorizontalAlignment="Left" Height="245" Margin="41,100,0,0" VerticalAlignment="Top" Width="540"/>
 
     </Grid>
