@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DbAccess.Repository
 {
-    class BillTypeDictRepository: GenericRepository<BillTypeDict>, IBillTypeDictRepository
+    public class BillTypeDictRepository: GenericRepository<BillTypeDict>, IBillTypeDictRepository
     {
     }
 }

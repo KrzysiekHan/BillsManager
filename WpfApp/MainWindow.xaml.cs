@@ -25,13 +25,11 @@ namespace WpfApp
     public partial class MainWindow : Window
     {
         IContainer AppContainer;
-
-        private readonly IRecepientService recipientService;
+      
         public MainWindow()
         {
             SetupContainer();
-            var recipientList = this.recipientService.GetActiveRecipients();
-            this.DataContext = new MainViewModel();
+            //this.DataContext = new MainViewModel();
         }
 
         private void SetupContainer()
@@ -40,6 +38,7 @@ namespace WpfApp
             BuildupContainer(builder);
             var container = builder.Build();
             AppContainer = container;
+           
         }
 
         private void BuildupContainer(ContainerBuilder builder)
