@@ -12,9 +12,7 @@ namespace ViewModelLayer
 {
     public class testingDal
     {
-        private IBillRepository billRepository = new BillRepository();
-        private IFactory factory = new Factory();
-        BillService billService = new BillService(billRepository, );
+
         
     }
 }

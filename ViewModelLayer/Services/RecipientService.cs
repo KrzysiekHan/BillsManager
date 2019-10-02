@@ -9,7 +9,7 @@ using ViewModelLayer.Interfaces.Recipient;
 
 namespace ViewModelLayer.Services
 {
-    public class RecipientService : IRecepientService
+    public class RecipientService : IRecipientService
     {
         private readonly IRecipientRepository repo;
         private readonly IFactory factory;

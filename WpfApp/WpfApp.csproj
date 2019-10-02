@@ -99,6 +99,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutofacModules\AutofacModules.csproj">
+      <Project>{3115CE71-B22A-481B-B8E7-20B356E8239D}</Project>
+      <Name>AutofacModules</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModelLayer\ViewModelLayer.csproj">
       <Project>{5D1B04AA-2C92-41D7-B0E7-3A9E024781DA}</Project>
       <Name>ViewModelLayer</Name>

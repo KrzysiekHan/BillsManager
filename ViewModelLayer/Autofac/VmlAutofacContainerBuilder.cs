@@ -13,16 +13,15 @@ using ViewModelLayer.Services;
 
 namespace ViewModelLayer.Autofac
 {
-    public class VmlAutofacContainerBuilder
+    public class VmlAutofacContainerBuilder 
     {
         public void AddDependenciesToContainer(ContainerBuilder builder)
         {
-            //builder.RegisterType<>().As<>().InstancePerDependency();
             builder.RegisterType<BillService>().As<IBillService>().InstancePerDependency();
             builder.RegisterType<BillFactory>().As<IBillFactory>().InstancePerDependency();
 
-            builder.RegisterType<RecipientService>().As<IRecepientService>().InstancePerDependency();
-            builder.RegisterType<RecipientFactory>()
+            builder.RegisterType<RecipientService>().As<IRecipientService>().InstancePerDependency();
+            builder.RegisterType<RecipientFactory>().As<IRecipientFactory>().InstancePerDependency();
         }
     }
 }
