@@ -11,6 +11,7 @@ namespace ViewModelLayer.Interfaces.Bill
         IBill GetBill(int billId);
         void CreateBill(IBill bill);
         void UpdateBill(IBill bill);
+        void RemoveBill(int id);
         IEnumerable<IBillType> GetBillTypes();
         IEnumerable<IBill> GetAllBills();
         IEnumerable<IBill> GetBillsForMonth(int month);

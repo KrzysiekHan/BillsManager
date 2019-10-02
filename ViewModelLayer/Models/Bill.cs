@@ -7,7 +7,7 @@ using ViewModelLayer.Interfaces;
 
 namespace ViewModelLayer.Models
 {
-    class Bill : IBill
+    public class Bill : IBill
     {
         public int BillId { get; set; }
         public decimal DueAmount { get; set; }

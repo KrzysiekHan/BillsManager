@@ -14,10 +14,11 @@ namespace ViewModelLayer.Services
         private readonly IBillRepository repo;
         private readonly IBillTypeDictRepository typerepo;
         private readonly IFactory factory;
-        public BillService(IBillRepository billRepository, IFactory factory)
+        public BillService(IBillRepository billRepository, IFactory factory, IBillTypeDictRepository typerepo)
         {
             this.repo = billRepository;
             this.factory = factory;
+            this.typerepo = typerepo;
         }
         public void CreateBill(IBill bill)
         {
@@ -77,6 +78,12 @@ namespace ViewModelLayer.Services
             {
                 yield return factory.BillFactory.NewBillType(item.BillTypeDictId, item.Name);
             }
+        }
+
+        public void RemoveBill(int id)
+        {
+            repo.Delete(id);
+            repo.Save();
         }
     }
 }
