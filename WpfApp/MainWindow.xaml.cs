@@ -27,7 +27,6 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        IContainer AppContainer;
         private readonly IBillService billService;
         private readonly IRecipientService recipientService;
         public MainWindow()
@@ -50,8 +49,6 @@ namespace WpfApp
             builder.RegisterModule(new ViewModelLayerModule());
             BuildupContainer(builder);
             var container = builder.Build();
-            AppContainer = container;
-           
         }
 
         private void BuildupContainer(ContainerBuilder builder)

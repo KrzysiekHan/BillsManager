@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacModules", "AutofacModules\AutofacModules.csproj", "{3115CE71-B22A-481B-B8E7-20B356E8239D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcUI", "MvcUI\MvcUI.csproj", "{7E992C67-5B30-48FA-A778-5815D9ECE251}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3115CE71-B22A-481B-B8E7-20B356E8239D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3115CE71-B22A-481B-B8E7-20B356E8239D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3115CE71-B22A-481B-B8E7-20B356E8239D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E992C67-5B30-48FA-A778-5815D9ECE251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E992C67-5B30-48FA-A778-5815D9ECE251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E992C67-5B30-48FA-A778-5815D9ECE251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E992C67-5B30-48FA-A778-5815D9ECE251}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

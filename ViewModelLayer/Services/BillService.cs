@@ -32,6 +32,7 @@ namespace ViewModelLayer.Services
                 RecipientId = bill.RecipientId
             };
             repo.Insert(dbbill);
+            repo.Save();
         }
 
         public void UpdateBill(IBill bill)

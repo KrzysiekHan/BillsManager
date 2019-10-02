@@ -32,6 +32,7 @@ namespace ViewModelLayer.Services
                 CustomerServiceUrl = recipient.CustomerServiceUrl
             };
             repo.Insert(dbrecipient);
+            repo.Save();
         }
 
         public void UpdateRecepient(IRecipient recipient)

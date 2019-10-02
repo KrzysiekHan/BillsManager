@@ -17,6 +17,7 @@ namespace ViewModelLayer.Autofac
     {
         public void AddDependenciesToContainer(ContainerBuilder builder)
         {
+            builder.RegisterType<Factory.Factory>().As<IFactory>().InstancePerDependency();
             builder.RegisterType<BillService>().As<IBillService>().InstancePerDependency();
             builder.RegisterType<BillFactory>().As<IBillFactory>().InstancePerDependency();
 
