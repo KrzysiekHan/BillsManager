@@ -76,7 +76,8 @@ namespace ViewModelLayer.Services
             var response = this.typerepo.GetAll().ToList();
             foreach (var item in response)
             {
-                yield return factory.BillFactory.NewBillType(item.BillTypeDictId, item.Name);
+                var something = factory.BillFactory.NewBillType(item.BillTypeDictId, item.Name);
+                yield return something;
             }
         }
 

@@ -22,7 +22,8 @@ namespace DbAccess.DbModel
             billTypeDicts.Add(new BillTypeDict() { BillTypeDictId = 7, Name = "Szambo" });
             billTypeDicts.Add(new BillTypeDict() { BillTypeDictId = 8, Name = "OC samochód" });
             billTypeDicts.Add(new BillTypeDict() { BillTypeDictId = 9, Name = "Przegląd samochód" });
-
+            context.BillTypeDicts.AddRange(billTypeDicts);
+            context.SaveChanges();
             base.Seed(context);
         }
     }

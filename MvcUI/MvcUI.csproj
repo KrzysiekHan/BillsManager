@@ -142,6 +142,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BillsListViewModel.cs" />
+    <Compile Include="Models\Bill\BillTypeVM.cs" />
     <Compile Include="Models\Bill\CreateBillVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

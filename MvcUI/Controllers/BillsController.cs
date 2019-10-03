@@ -66,6 +66,7 @@ namespace MvcUI.Controllers
         // GET: Bills/Create
         public ActionResult Create()
         {
+            ViewBag.TypeId = new SelectList(_billService.GetBillTypes(), "BillTypeId", "Name");
             return View();
         }
 
@@ -140,6 +141,7 @@ namespace MvcUI.Controllers
             return RedirectToAction("Index");
         }
 
+        private List<BillType>
 
     }
 }

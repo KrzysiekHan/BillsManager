@@ -4,20 +4,36 @@ using System.Linq;
 using System.Web;
 using ViewModelLayer.Interfaces;
 using ViewModelLayer.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace MvcUI.Models.Bill
 {
     public class CreateBillVM
     {
+
         public int BillId { get; set; }
+
+        [Display(Name = "Wysokość opłaty")]
+        [DataType(DataType.Currency)]
         public decimal DueAmount { get; set; }
+
+        [Display(Name = "Termin")]
+        [DataType(DataType.Date)]
         public DateTime DueDate { get; set; }
+
         public bool Periodical { get; set; }
+
+        [Display(Name = "Komentarz")]
         public string Description { get; set; }
+
+        [Display(Name = "Odbiorca płatności")]
         public int RecipientId { get; set; }
+
+        [Display(Name = "Kategoria płatności")]
         public int BillTypeId { get; set; }
 
-        List<BillType> billTypes { get; set; }
+        List<BillTypeVM> billTypes { get; set; }
+
         List<Recipient> recipients { get; set; }
 
         public CreateBillVM()
