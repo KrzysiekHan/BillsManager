@@ -13,6 +13,7 @@ namespace DbAccess.DbModel
 
         public BillManagerDbContext():base("BillsReminder")
         {
+            Database.SetInitializer<BillManagerDbContext>(new DbInitializer());
         }
 
         public DbSet<Bill> Bills { get; set; }

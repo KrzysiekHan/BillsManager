@@ -20,6 +20,11 @@ namespace MvcUI.Models.Bill
         List<BillType> billTypes { get; set; }
         List<Recipient> recipients { get; set; }
 
+        public CreateBillVM()
+        {
+
+        }
+
         public CreateBillVM(IBill bill)
         {
             this.BillId = bill.BillId;

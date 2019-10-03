@@ -38,12 +38,12 @@ namespace MvcUI.Controllers
         public ActionResult Index()
         {
             var BillsList = _billService.GetAllBills();
-            //List<CreateBillVM> list = new List<CreateBillVM>();
-            //foreach (var item in BillsList)
-            //{
-            //    list.Add(new CreateBillVM(item));
-            //}
-            return View(BillsList);
+            List<CreateBillVM> list = new List<CreateBillVM>();
+            foreach (var item in BillsList)
+            {
+                list.Add(new CreateBillVM(item));
+            }
+            return View(list);
         }
 
         // GET: Bills/Details/5
@@ -55,6 +55,7 @@ namespace MvcUI.Controllers
             }
             int idn = id ?? default(int);
             IBill bill = _billService.GetBill(idn);
+
             if (bill == null)
             {
                 return HttpNotFound();
@@ -71,12 +72,12 @@ namespace MvcUI.Controllers
         // POST: Bills/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description")] IBill bill)
+        public ActionResult Create([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description")] CreateBillVM bill)
         {
             if (ModelState.IsValid)
             {
                 IBill item =_billFactory.NewBill(bill.BillId, bill.RecipientId, bill.BillTypeId, bill.Description, bill.DueAmount, bill.DueDate, bill.Periodical);
-                _billService.CreateBill(item);               
+                _billService.CreateBill(item);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
                 return RedirectToAction("Index");
             }
 
@@ -138,5 +139,7 @@ namespace MvcUI.Controllers
             _billService.RemoveBill(id);
             return RedirectToAction("Index");
         }
+
+
     }
 }
