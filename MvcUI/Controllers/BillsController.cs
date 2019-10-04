@@ -66,14 +66,15 @@ namespace MvcUI.Controllers
         // GET: Bills/Create
         public ActionResult Create()
         {
-            ViewBag.TypeId = new SelectList(_billService.GetBillTypes(), "BillTypeId", "Name");
+            List<BillTypeVM> types = CreateTypesList();
+            ViewBag.TypeId = new SelectList(types, "BillTypeId", "Name");
             return View();
         }
 
         // POST: Bills/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description")] CreateBillVM bill)
+        public ActionResult Create([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description,BillTypeId")] CreateBillVM bill)
         {
             if (ModelState.IsValid)
             {
@@ -141,7 +142,20 @@ namespace MvcUI.Controllers
             return RedirectToAction("Index");
         }
 
-        private List<BillType>
+        private List<BillTypeVM> CreateTypesList()
+        {
+            IEnumerable<IBillType> billTypes = _billService.GetBillTypes();
+            List<BillTypeVM> returnList = new List<BillTypeVM>();
+            foreach (var item in billTypes)
+            {
+                returnList.Add(new BillTypeVM()
+                {
+                    BillTypeId = item.BillTypeId,
+                    Name = item.Name
+                });
+            }
+            return returnList;
+        }
 
     }
 }

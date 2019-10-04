@@ -11,8 +11,13 @@ namespace ViewModelLayer.Factory
 {
     public class Factory : IFactory
     {
-        public IBillFactory BillFactory { get; }
+        public Factory(IBillFactory billFactory, IRecipientFactory recipientFactory)
+        {
+            BillFactory = billFactory;
+            RecipientFactory = recipientFactory;
 
+        }
+        public IBillFactory BillFactory { get; }
         public IRecipientFactory RecipientFactory { get; }
     }
 }

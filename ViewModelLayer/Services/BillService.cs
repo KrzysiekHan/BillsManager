@@ -1,4 +1,5 @@
-﻿using DbAccess.Repository.Interfaces;
+﻿using DbAccess.Entities;
+using DbAccess.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace ViewModelLayer.Services
             this.factory = factory;
             this.typerepo = typerepo;
         }
+
         public void CreateBill(IBill bill)
         {
             DbAccess.Entities.Bill dbbill = new DbAccess.Entities.Bill()
@@ -73,11 +75,11 @@ namespace ViewModelLayer.Services
 
         public IEnumerable<IBillType> GetBillTypes()
         {
-            var response = this.typerepo.GetAll().ToList();
-            foreach (var item in response)
+            List<BillTypeDict> list = this.typerepo.GetAll().ToList();
+            foreach (var item in list)
             {
-                var something = factory.BillFactory.NewBillType(item.BillTypeDictId, item.Name);
-                yield return something;
+                var response = factory.BillFactory.NewBillType(item.BillTypeDictId, item.Name);
+                yield return response;
             }
         }
 
