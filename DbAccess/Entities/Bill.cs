@@ -13,6 +13,8 @@ namespace DbAccess.Entities
         public DateTime DueDate { get; set; }
         public bool Periodical { get; set; }
         public string Description { get; set; }
+        public int Period { get; set; }
+        public bool Paid { get; set; }
 
         public int RecipientId { get; set; }
         public Recipient Recipient { get; set; }

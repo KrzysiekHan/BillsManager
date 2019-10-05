@@ -8,7 +8,7 @@ namespace ViewModelLayer.Interfaces.Bill
 {
     public interface IBillFactory
     {
-        IBill NewBill(int billid, int recipientId, int billTypeId, string description, decimal dueAmount, DateTime dueDate, bool periodical);
+        IBill NewBill(int billid, int recipientId, int billTypeId, string description, decimal dueAmount, DateTime dueDate, bool periodical, int period, bool paid);
         IBillType NewBillType(int billTypeId, string name);
     }
 }

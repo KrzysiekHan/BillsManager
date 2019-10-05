@@ -18,5 +18,7 @@ namespace ViewModelLayer.Models
         public int BillTypeId { get; set; }
         public IRecipient Recipient { get; set; }  
         public IBillType BillType { get; set; }
+        public int Period { get; set; }
+        public bool Paid { get; set; }
     }
 }

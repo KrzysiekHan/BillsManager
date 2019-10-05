@@ -1,4 +1,4 @@
-﻿namespace DbAccess.Migrations
+namespace DbAccess.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -16,6 +16,8 @@
                         DueDate = c.DateTime(nullable: false),
                         Periodical = c.Boolean(nullable: false),
                         Description = c.String(),
+                        Period = c.Int(nullable: false),
+                        Paid = c.Boolean(nullable: false),
                         RecipientId = c.Int(nullable: false),
                         BillTypeDictId = c.Int(nullable: false),
                     })

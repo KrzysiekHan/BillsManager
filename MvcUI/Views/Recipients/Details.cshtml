@@ -4,11 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Szczegóły</h2>
 
 <div>
-    <h4>Recipient</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.CompanyName)
@@ -42,17 +40,10 @@
             @Html.DisplayFor(model => model.CustomerServiceUrl)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RecipientId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Index", "Recipients")" class="btn btn-default">
+        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Powrót
+    </a>
 </p>

@@ -27,7 +27,7 @@ namespace ViewModelLayer.Services
                 RecipientId = recipient.RecipientId,
                 CompanyName = recipient.CompanyName,
                 Account = recipient.Account,
-                Active = recipient.Active,
+                Active = true,
                 Address = recipient.Address,
                 CustomerServiceUrl = recipient.CustomerServiceUrl
             };
@@ -67,6 +67,7 @@ namespace ViewModelLayer.Services
             var recipient = this.repo.GetById(id);
             recipient.Active = false;
             this.repo.Update(recipient);
+            this.repo.Save();
         }
     }
 }

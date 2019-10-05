@@ -146,6 +146,7 @@
     <Compile Include="Models\Bill\BillsListViewModel.cs" />
     <Compile Include="Models\Bill\BillTypeVM.cs" />
     <Compile Include="Models\Bill\CreateBillVM.cs" />
+    <Compile Include="Models\Bill\IndexBillVM.cs" />
     <Compile Include="Models\Recipient\RecipientVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

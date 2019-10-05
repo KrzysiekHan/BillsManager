@@ -18,14 +18,6 @@ namespace MvcUI.Controllers
 
         public ActionResult Index()
         {
-            this._recipientService.CreateRecepient(new Recipient()
-            {
-                Account = "43749928388829",
-                Active = true,
-                Address = "Bulowice ulica błotna numer zachlapany",
-                CompanyName = "Tauron",
-                CustomerServiceUrl = "www.dupa.pl"
-            });
             return View();
         }
 

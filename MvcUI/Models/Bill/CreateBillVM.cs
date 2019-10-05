@@ -33,12 +33,16 @@ namespace MvcUI.Models.Bill
         [Display(Name = "Kategoria płatności")]
         public int BillTypeId { get; set; }
 
+        [Display(Name = "Okres płatności w miesiącach (0 - jednorazowa)")]
+        public int Period { get; set; }
+
         List<BillTypeVM> billTypes { get; set; }
 
         List<Recipient> recipients { get; set; }
 
         public IEnumerable<SelectListItem> TypeItems { get; set; }
 
+        public IEnumerable<SelectListItem> RecipientsList { get; set; }
         public CreateBillVM()
         {
 

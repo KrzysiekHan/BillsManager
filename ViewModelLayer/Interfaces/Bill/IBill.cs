@@ -15,6 +15,8 @@ namespace ViewModelLayer.Interfaces
         DateTime DueDate { get; set; }
         bool Periodical { get; set; }
         string Description { get; set; }
+        int Period { get; set; }
+        bool Paid { get; set; }
         IRecipient Recipient { get; set; }
         IBillType BillType { get; set; }
     }

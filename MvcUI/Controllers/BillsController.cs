@@ -12,6 +12,7 @@ using MvcUI.Models;
 using MvcUI.Models.Bill;
 using ViewModelLayer.Interfaces;
 using ViewModelLayer.Interfaces.Bill;
+using ViewModelLayer.Interfaces.Recipient;
 using ViewModelLayer.Models;
 
 namespace MvcUI.Controllers
@@ -20,10 +21,12 @@ namespace MvcUI.Controllers
     {
         private readonly IBillService _billService;
         private readonly IBillFactory _billFactory;
-        public BillsController(IBillService billService, IBillFactory billFactory)
+        private readonly IRecipientService _recipientService;
+        public BillsController(IBillService billService, IBillFactory billFactory, IRecipientService recipientService)
         {
             _billService = billService;
             _billFactory = billFactory;
+            _recipientService = recipientService;
         }
 
         // GET: Bills
@@ -45,14 +48,13 @@ namespace MvcUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            int idn = id ?? default(int);
-            IBill bill = _billService.GetBill(idn);
+            IBill bill = _billService.GetBill(CommonFunctions.NullableIntToInt(id));
 
             if (bill == null)
             {
                 return HttpNotFound();
             }
-            return View(bill);
+            return View(new CreateBillVM(bill));
         }
 
         // GET: Bills/Create
@@ -61,17 +63,19 @@ namespace MvcUI.Controllers
             CreateBillVM vm = new CreateBillVM();
             List<BillTypeVM> types = CreateTypesList();
             vm.TypeItems = new SelectList(types, "BillTypeId", "Name");
+            List<Recipient> recipients = CreateRecipientsList();
+            vm.RecipientsList = new SelectList(recipients, "RecipientId", "CompanyName");
             return View(vm);
         }
 
         // POST: Bills/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description,BillTypeId")] CreateBillVM bill)
+        public ActionResult Create([Bind(Include = "BillId,DueAmount,DueDate,Period,Description,BillTypeId,RecipientId")] CreateBillVM bill)
         {
             if (ModelState.IsValid)
             {
-                IBill item =_billFactory.NewBill(bill.BillId, bill.RecipientId, bill.BillTypeId, bill.Description, bill.DueAmount, bill.DueDate, bill.Periodical);
+                IBill item =_billFactory.NewBill(bill.BillId, bill.RecipientId, bill.BillTypeId, bill.Description, bill.DueAmount, bill.DueDate, bill.Periodical, bill.Period, false);
                 _billService.CreateBill(item);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
                 return RedirectToAction("Index");
             }
@@ -144,6 +148,21 @@ namespace MvcUI.Controllers
                 {
                     BillTypeId = item.BillTypeId,
                     Name = item.Name
+                });
+            }
+            return returnList;
+        }
+
+        private List<Recipient> CreateRecipientsList()
+        {
+            IEnumerable<IRecipient> recipients = _recipientService.GetActiveRecipients();
+            List<Recipient> returnList = new List<Recipient>();
+            foreach (var item in recipients)
+            {
+                returnList.Add(new Recipient()
+                {
+                    RecipientId = item.RecipientId,
+                    CompanyName = item.CompanyName
                 });
             }
             return returnList;

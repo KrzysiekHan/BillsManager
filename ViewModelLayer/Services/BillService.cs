@@ -24,19 +24,43 @@ namespace ViewModelLayer.Services
 
         public void CreateBill(IBill bill)
         {
-            DbAccess.Entities.Bill dbbill = new DbAccess.Entities.Bill()
+            DbAccess.Entities.Bill dbbill;
+            if (bill.Period > 0)
             {
-                BillId = bill.BillId,
-                Description = bill.Description,
-                DueAmount = bill.DueAmount,
-                DueDate = bill.DueDate,
-                Periodical = bill.Periodical,
-                BillTypeDictId = bill.BillTypeId,
-                RecipientId = bill.RecipientId
-            };
+                dbbill = new DbAccess.Entities.Bill()
+                {
+                    BillId = bill.BillId,
+                    Description = bill.Description,
+                    DueAmount = bill.DueAmount,
+                    DueDate = bill.DueDate,
+                    Periodical = true,
+                    BillTypeDictId = bill.BillTypeId,
+                    RecipientId = bill.RecipientId,
+                    Period = bill.Period,
+                    Paid = false
+                    
+                };
+            } else
+            {
+                dbbill = new DbAccess.Entities.Bill()
+                {
+                    BillId = bill.BillId,
+                    Description = bill.Description,
+                    DueAmount = bill.DueAmount,
+                    DueDate = bill.DueDate,
+                    Periodical = false,
+                    BillTypeDictId = bill.BillTypeId,
+                    RecipientId = bill.RecipientId,
+                    Period = 0,
+                    Paid = false
+                };
+            }
+
+
             repo.Insert(dbbill);
             repo.Save();
         }
+
 
         public void UpdateBill(IBill bill)
         {
@@ -47,6 +71,14 @@ namespace ViewModelLayer.Services
             dbbill.Periodical = bill.Periodical;
             dbbill.BillTypeDictId = bill.BillTypeId;
             dbbill.RecipientId = bill.RecipientId;
+            dbbill.Paid = bill.Paid;
+        }
+
+        public void MarkBillAsPaid(int billId)
+        {
+            DbAccess.Entities.Bill dbbill = this.repo.GetById(billId);
+            dbbill.Paid = true;
+     //TODO mark bill as paid not finished
         }
 
         public IEnumerable<IBill> GetAllBills()
@@ -54,22 +86,44 @@ namespace ViewModelLayer.Services
             var response = this.repo.GetAll().ToList();
             foreach (var item in response)
             {
-                yield return factory.BillFactory.NewBill(item.BillId, item.RecipientId, item.BillTypeDictId, item.Description, item.DueAmount, item.DueDate, item.Periodical);
+                yield return factory.BillFactory.NewBill(item.BillId, item.RecipientId, item.BillTypeDictId, item.Description, item.DueAmount, item.DueDate, item.Periodical, item.Period, item.Paid);
             }
         }
 
         public IBill GetBill(int billId)
         {
             var bill = this.repo.GetById(billId);
-            return factory.BillFactory.NewBill(bill.BillId,bill.RecipientId, bill.BillTypeDictId, bill.Description, bill.DueAmount, bill.DueDate, bill.Periodical);
+            return factory.BillFactory.NewBill(bill.BillId,bill.RecipientId, bill.BillTypeDictId, bill.Description, bill.DueAmount, bill.DueDate, bill.Periodical, bill.Period, bill.Paid);
         }
 
         public IEnumerable<IBill> GetBillsForMonth(int month)
         {
-            var response = this.repo.GetWithPredicate(x => x.DueDate.Month == month).ToList();
-            foreach (var item in response)
+
+            var list = this.repo.GetAll().ToList();
+            foreach (var item in list)
             {
-                yield return factory.BillFactory.NewBill(item.BillId, item.RecipientId, item.BillTypeDictId, item.Description, item.DueAmount, item.DueDate, item.Periodical);
+                //periodical created in past
+                if (item.Periodical && (DateTime.Now > item.DueDate))
+                {
+                    int monthDifference = ((DateTime.Now.Year - item.DueDate.Year) * 12) + DateTime.Now.Month - item.DueDate.Month;
+                    if (monthDifference%item.Period == 0) 
+                    {
+                        yield return factory.BillFactory.NewBill(item.BillId, item.RecipientId, item.BillTypeDictId, item.Description, item.DueAmount, item.DueDate, item.Periodical, item.Period, item.Paid);
+                    }
+                }
+
+                //periodical not paid yet
+                if (item.Periodical && DateTime.Now <= item.DueDate && item.DueDate.Month == month)
+                {
+                    yield return factory.BillFactory.NewBill(item.BillId, item.RecipientId, item.BillTypeDictId, item.Description, item.DueAmount, item.DueDate, item.Periodical, item.Period, item.Paid);
+                }
+                
+                //not periodical for this month
+                if (!item.Periodical && item.DueDate.Month == month)
+                {
+                    yield return factory.BillFactory.NewBill(item.BillId, item.RecipientId, item.BillTypeDictId, item.Description, item.DueAmount, item.DueDate, item.Periodical, item.Period, item.Paid);
+                }
+                
             }
         }
 
@@ -88,5 +142,7 @@ namespace ViewModelLayer.Services
             repo.Delete(id);
             repo.Save();
         }
+
+
     }
 }

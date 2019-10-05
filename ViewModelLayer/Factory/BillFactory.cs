@@ -12,7 +12,7 @@ namespace ViewModelLayer.Factory
     public class BillFactory : IBillFactory
     {
 
-        public IBill NewBill(int billid, int recipientId, int billTypeId, string description, decimal dueAmount, DateTime dueDate, bool periodical)
+        public IBill NewBill(int billid, int recipientId, int billTypeId, string description, decimal dueAmount, DateTime dueDate, bool periodical, int period, bool paid)
         {
             return new Bill()
             {
@@ -22,7 +22,9 @@ namespace ViewModelLayer.Factory
                 Description = description,
                 DueAmount = dueAmount,
                 DueDate = dueDate,
-                Periodical = periodical
+                Periodical = periodical,
+                Period = period,
+                Paid = paid
             };
         }
 

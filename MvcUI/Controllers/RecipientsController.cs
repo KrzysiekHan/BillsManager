@@ -45,11 +45,12 @@ namespace MvcUI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             IRecipient recipient = _recipientService.GetRecepient(CommonFunctions.NullableIntToInt(id));
+            RecipientVM vm = new RecipientVM(recipient);
             if (recipient == null)
             {
                 return HttpNotFound();
             }
-            return View(recipient);
+            return View(vm);
         }
 
         // GET: Recipients/Create
@@ -63,7 +64,7 @@ namespace MvcUI.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RecipientId,CompanyName,Address,Account,CustomerServiceUrl,Active")] Recipient recipient)
+        public ActionResult Create([Bind(Include = "RecipientId,CompanyName,Address,Account,CustomerServiceUrl")] RecipientVM recipient)
         {
             if (ModelState.IsValid)
             {
@@ -114,11 +115,12 @@ namespace MvcUI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             IRecipient recipient = _recipientService.GetRecepient(CommonFunctions.NullableIntToInt(id));
+            RecipientVM vm = new RecipientVM(recipient);
             if (recipient == null)
             {
                 return HttpNotFound();
             }
-            return View(recipient);
+            return View(vm);
         }
 
         // POST: Recipients/Delete/5
