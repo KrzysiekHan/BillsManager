@@ -60,5 +60,13 @@ namespace ViewModelLayer.Services
             var recipient = this.repo.GetById(recipientId);
             return factory.RecipientFactory.NewRecipient(recipient.RecipientId, recipient.CompanyName, recipient.Address, recipient.Account, recipient.CustomerServiceUrl, recipient.Active);
         }
+
+        public void DeactivateRecipient(int recipientId)
+        {
+            object id = recipientId;
+            var recipient = this.repo.GetById(id);
+            recipient.Active = false;
+            this.repo.Update(recipient);
+        }
     }
 }

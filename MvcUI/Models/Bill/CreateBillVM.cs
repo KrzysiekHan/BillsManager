@@ -5,6 +5,7 @@ using System.Web;
 using ViewModelLayer.Interfaces;
 using ViewModelLayer.Models;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace MvcUI.Models.Bill
 {
@@ -35,6 +36,8 @@ namespace MvcUI.Models.Bill
         List<BillTypeVM> billTypes { get; set; }
 
         List<Recipient> recipients { get; set; }
+
+        public IEnumerable<SelectListItem> TypeItems { get; set; }
 
         public CreateBillVM()
         {

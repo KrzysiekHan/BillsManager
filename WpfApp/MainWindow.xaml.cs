@@ -32,14 +32,6 @@ namespace WpfApp
         public MainWindow()
         {
             SetupContainer();
-            recipientService.CreateRecepient(new Recipient()
-            {
-                Account = "43749928388829",
-                Active = true,
-                Address = "Bulowice ulica błotna numer zachlapany",
-                CompanyName = "Tauron",
-                CustomerServiceUrl = "www.dupa.pl"
-            });
         }
 
         private void SetupContainer()

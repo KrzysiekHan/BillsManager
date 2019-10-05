@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using MvcUI.Common;
 using MvcUI.Models;
 using MvcUI.Models.Bill;
 using ViewModelLayer.Interfaces;
@@ -23,15 +24,6 @@ namespace MvcUI.Controllers
         {
             _billService = billService;
             _billFactory = billFactory;
-
-            /*
-            var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Bill, Dest>();
-            });
-            var mapper = config.CreateMapper();
-            // or
-            IMapper mapper = new Mapper(config);
-            */
         }
 
         // GET: Bills
@@ -66,9 +58,10 @@ namespace MvcUI.Controllers
         // GET: Bills/Create
         public ActionResult Create()
         {
+            CreateBillVM vm = new CreateBillVM();
             List<BillTypeVM> types = CreateTypesList();
-            ViewBag.TypeId = new SelectList(types, "BillTypeId", "Name");
-            return View();
+            vm.TypeItems = new SelectList(types, "BillTypeId", "Name");
+            return View(vm);
         }
 
         // POST: Bills/Create
@@ -124,8 +117,7 @@ namespace MvcUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            int idn = id ?? default(int);
-            IBill bill = _billService.GetBill(idn);
+            IBill bill = _billService.GetBill(CommonFunctions.NullableIntToInt(id));
             if (bill == null)
             {
                 return HttpNotFound();

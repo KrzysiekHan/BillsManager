@@ -12,5 +12,6 @@ namespace ViewModelLayer.Interfaces.Recipient
         void CreateRecepient(IRecipient recipient);
         void UpdateRecepient(IRecipient recipient);
         IEnumerable<IRecipient> GetActiveRecipients();
+        void DeactivateRecipient(int recipientId);
     }
 }
