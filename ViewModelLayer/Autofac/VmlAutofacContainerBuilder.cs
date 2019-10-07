@@ -9,6 +9,7 @@ using ViewModelLayer.Factory;
 using ViewModelLayer.Interfaces;
 using ViewModelLayer.Interfaces.Bill;
 using ViewModelLayer.Interfaces.Recipient;
+using ViewModelLayer.Models;
 using ViewModelLayer.Services;
 
 namespace ViewModelLayer.Autofac
@@ -23,6 +24,7 @@ namespace ViewModelLayer.Autofac
 
             builder.RegisterType<RecipientService>().As<IRecipientService>().InstancePerDependency();
             builder.RegisterType<RecipientFactory>().As<IRecipientFactory>().InstancePerDependency();
+            builder.RegisterType<Mapping>().As<IMapping>().InstancePerDependency();
         }
     }
 }

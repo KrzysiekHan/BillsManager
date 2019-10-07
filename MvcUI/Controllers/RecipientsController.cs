@@ -18,11 +18,13 @@ namespace MvcUI.Controllers
     {
         private readonly IRecipientService _recipientService;
         private readonly IRecipientFactory _recipientFactory;
+        private readonly IMapping _mapping;
 
-        public RecipientsController(IRecipientService recipientService, IRecipientFactory recipientFactory)
+        public RecipientsController(IRecipientService recipientService, IRecipientFactory recipientFactory, IMapping mapping)
         {
             _recipientService = recipientService;
             _recipientFactory = recipientFactory;
+            _mapping = mapping;
         }
 
         // GET: Recipients
@@ -97,11 +99,11 @@ namespace MvcUI.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RecipientId,CompanyName,Address,Account,CustomerServiceUrl,Active")] IRecipient recipient)
+        public ActionResult Edit([Bind(Include = "RecipientId,CompanyName,Address,Account,CustomerServiceUrl,Active")] RecipientVM recipient)
         {
             if (ModelState.IsValid)
             {
-                _recipientService.UpdateRecepient(recipient);
+                _recipientService.UpdateRecepient();
                 return RedirectToAction("Index");
             }
             return View(recipient);
