@@ -43,6 +43,10 @@ namespace MvcUI.Models.Bill
         public IEnumerable<SelectListItem> TypeItems { get; set; }
 
         public IEnumerable<SelectListItem> RecipientsList { get; set; }
+
+        BillTypeVM BillType { get; set; }
+
+        RecipientVM RecipientVM { get; set; }
         public CreateBillVM()
         {
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -38,6 +39,7 @@ namespace MvcUI.Controllers
             {
                 list.Add(new CreateBillVM(item));
             }
+
             return View(list);
         }
 
@@ -90,13 +92,13 @@ namespace MvcUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            int idn = id ?? default(int);
-            IBill bill = _billService.GetBill(idn);
+            IBill bill = _billService.GetBill(CommonFunctions.NullableIntToInt(id));
+            CreateBillVM vm = new CreateBillVM(bill);
             if (bill == null)
             {
                 return HttpNotFound();
             }
-            return View(bill);
+            return View(vm);
         }
 
         // POST: Bills/Edit/5
@@ -104,7 +106,7 @@ namespace MvcUI.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description")] IBill bill)
+        public ActionResult Edit([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description,Period")] IBill bill)
         {
             if (ModelState.IsValid)
             {
@@ -127,6 +129,13 @@ namespace MvcUI.Controllers
                 return HttpNotFound();
             }
             return View(bill);
+        }
+
+        [HttpPost]
+        public ActionResult PayBill(int id)
+        {
+            _billService.MarkBillAsPaid(id);
+            return RedirectToAction("Index"); 
         }
 
         // POST: Bills/Delete/5

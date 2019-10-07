@@ -17,9 +17,9 @@ namespace DbAccess.Entities
         public bool Paid { get; set; }
 
         public int RecipientId { get; set; }
-        public Recipient Recipient { get; set; }
+        public virtual Recipient Recipient { get; set; }
 
         public int BillTypeDictId { get; set; }
-        public BillTypeDict BillTypeDict { get; set; }
+        public virtual BillTypeDict BillTypeDict { get; set; }
     }
 }
