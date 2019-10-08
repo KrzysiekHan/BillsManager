@@ -103,7 +103,9 @@ namespace MvcUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _recipientService.UpdateRecepient();
+                _recipientService.UpdateRecepient(
+                    _recipientFactory.NewRecipient(recipient.RecipientId,recipient.CompanyName,recipient.Address,recipient.Account,recipient.CustomerServiceUrl,recipient.Active)
+                    );
                 return RedirectToAction("Index");
             }
             return View(recipient);

@@ -36,6 +36,7 @@ namespace MvcUI.Models.Bill
         [Display(Name = "Okres płatności w miesiącach (0 - jednorazowa)")]
         public int Period { get; set; }
 
+
         List<BillTypeVM> billTypes { get; set; }
 
         List<Recipient> recipients { get; set; }

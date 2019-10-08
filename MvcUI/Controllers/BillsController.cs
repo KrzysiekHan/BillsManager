@@ -106,11 +106,13 @@ namespace MvcUI.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description,Period")] IBill bill)
+        public ActionResult Edit([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description,Period")] CreateBillVM bill)
         {
             if (ModelState.IsValid)
             {
-                _billService.UpdateBill(bill);
+                _billService.UpdateBill(
+                    _billFactory.NewBill(bill.BillId,bill.RecipientId,bill.BillTypeId,bill.Description,bill.DueAmount,bill.DueDate,bill.Periodical,bill.Period,false)
+                    );
                 return RedirectToAction("Index");
             }
             return View(bill);
