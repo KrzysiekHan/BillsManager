@@ -43,6 +43,9 @@ namespace ViewModelLayer.Services
             dbrecipient.CompanyName = recipient.CompanyName;
             dbrecipient.CustomerServiceUrl = recipient.CustomerServiceUrl;
             dbrecipient.Active = recipient.Active;
+            this.repo.Update(dbrecipient);
+            this.repo.Save();
+
         }
 
         public IEnumerable<IRecipient> GetActiveRecipients()

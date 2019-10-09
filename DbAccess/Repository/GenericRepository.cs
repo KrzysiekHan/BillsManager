@@ -44,6 +44,7 @@ namespace DbAccess.Repository
         {
             table.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public void Delete(object id)
