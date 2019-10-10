@@ -42,7 +42,7 @@ namespace ViewModelLayer.Services
             dbrecipient.Address = recipient.Address;
             dbrecipient.CompanyName = recipient.CompanyName;
             dbrecipient.CustomerServiceUrl = recipient.CustomerServiceUrl;
-            dbrecipient.Active = recipient.Active;
+            dbrecipient.Active = true;
             this.repo.Update(dbrecipient);
             this.repo.Save();
 
