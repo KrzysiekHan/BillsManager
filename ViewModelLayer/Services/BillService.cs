@@ -72,13 +72,16 @@ namespace ViewModelLayer.Services
             dbbill.BillTypeDictId = bill.BillTypeId;
             dbbill.RecipientId = bill.RecipientId;
             dbbill.Paid = bill.Paid;
+            repo.Update(dbbill);
+            repo.Save();
         }
 
         public void MarkBillAsPaid(int billId)
         {
             DbAccess.Entities.Bill dbbill = this.repo.GetById(billId);
             dbbill.Paid = true;
-     //TODO mark bill as paid not finished
+            repo.Update(dbbill);
+            repo.Save();
         }
 
         public IEnumerable<IBill> GetAllBills()

@@ -94,6 +94,10 @@ namespace MvcUI.Controllers
             }
             IBill bill = _billService.GetBill(CommonFunctions.NullableIntToInt(id));
             CreateBillVM vm = new CreateBillVM(bill);
+            List<BillTypeVM> types = CreateTypesList();
+            vm.TypeItems = new SelectList(types, "BillTypeId", "Name");
+            List<Recipient> recipients = CreateRecipientsList();
+            vm.RecipientsList = new SelectList(recipients, "RecipientId", "CompanyName");
             if (bill == null)
             {
                 return HttpNotFound();
