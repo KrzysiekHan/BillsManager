@@ -19,7 +19,7 @@ namespace MvcUI.Models.Bill
         public decimal DueAmount { get; set; }
 
         [Display(Name = "Termin")]
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         public DateTime DueDate { get; set; }
 
         public bool Periodical { get; set; }
