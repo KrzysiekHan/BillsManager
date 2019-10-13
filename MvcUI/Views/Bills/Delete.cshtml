@@ -54,7 +54,7 @@
         @Html.AntiForgeryToken()
 
 <div class="form-actions no-color">
-    <input type="submit" value="Usuń" class="btn btn-default" /> 
+    <button type="submit" value="Usuń" class="btn btn-danger" > <span class="glyphicon glyphicon-remove"></span> Usuń</button>
     <a href="@Url.Action("Index", "Bills")" class="btn btn-default">
         <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Anuluj
     </a>
