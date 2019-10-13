@@ -15,11 +15,11 @@ namespace MvcUI.Models.Bill
         public int BillId { get; set; }
 
         [Display(Name = "Wysokość opłaty")]
-        [DataType(DataType.Currency)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         public decimal DueAmount { get; set; }
 
         [Display(Name = "Termin")]
-        //[DataType(DataType.Date)]
+        [DataType(DataType.Date)]
         public DateTime DueDate { get; set; }
 
         public bool Periodical { get; set; }

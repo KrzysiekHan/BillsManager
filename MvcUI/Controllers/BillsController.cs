@@ -67,6 +67,7 @@ namespace MvcUI.Controllers
             vm.TypeItems = new SelectList(types, "BillTypeId", "Name");
             List<Recipient> recipients = CreateRecipientsList();
             vm.RecipientsList = new SelectList(recipients, "RecipientId", "CompanyName");
+            vm.DueDate = DateTime.Now;
             return View(vm);
         }
 
@@ -110,7 +111,7 @@ namespace MvcUI.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BillId,DueAmount,DueDate,Periodical,Description,Period")] CreateBillVM bill)
+        public ActionResult Edit( CreateBillVM bill)
         {
             if (ModelState.IsValid)
             {
