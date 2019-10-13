@@ -15,7 +15,8 @@ namespace MvcUI.Models.Bill
         public int BillId { get; set; }
 
         [Display(Name = "Wysokość opłaty")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
+       // [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:C0}")]
+        //[DataType(DataType.Currency)]
         public decimal DueAmount { get; set; }
 
         [Display(Name = "Termin")]
@@ -62,6 +63,7 @@ namespace MvcUI.Models.Bill
             this.DueAmount = bill.DueAmount;
             this.DueDate = bill.DueDate;
             this.Periodical = bill.Periodical;
+            this.Period = bill.Period;
 
         }
     }

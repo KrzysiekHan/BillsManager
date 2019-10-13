@@ -135,7 +135,7 @@ namespace MvcUI.Controllers
             {
                 return HttpNotFound();
             }
-            return View(bill);
+            return View(new CreateBillVM(bill));
         }
 
         [HttpPost]
