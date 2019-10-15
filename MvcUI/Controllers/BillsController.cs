@@ -31,7 +31,7 @@ namespace MvcUI.Controllers
         }
 
         // GET: Bills
-        public ActionResult Index()
+        public ActionResult Index(string message)
         {
             var BillsList = _billService.GetAllBills();
             List<CreateBillVM> list = new List<CreateBillVM>();
@@ -39,7 +39,7 @@ namespace MvcUI.Controllers
             {
                 list.Add(new CreateBillVM(item));
             }
-
+            ViewBag.msg = TempData["ResultMessage"];
             return View(list);
         }
 
@@ -79,7 +79,8 @@ namespace MvcUI.Controllers
             if (ModelState.IsValid)
             {
                 IBill item =_billFactory.NewBill(bill.BillId, bill.RecipientId, bill.BillTypeId, bill.Description, bill.DueAmount, bill.DueDate, bill.Periodical, bill.Period, false);
-                _billService.CreateBill(item);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                _billService.CreateBill(item);
+                TempData["ResultMessage"] = "Utworzono rachunek";
                 return RedirectToAction("Index");
             }
 
@@ -142,6 +143,7 @@ namespace MvcUI.Controllers
         public ActionResult PayBill(int id)
         {
             _billService.MarkBillAsPaid(id);
+            TempData["ResultMessage"] = "Rachunek oznaczony jako opłacony";
             return RedirectToAction("Index"); 
         }
 

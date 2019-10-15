@@ -36,6 +36,7 @@ namespace MvcUI.Controllers
             {
                 vm.Add(new RecipientVM(item));
             }
+            ViewBag.msg = TempData["ResultMessage"];
             return View(vm);
         }
 
@@ -72,6 +73,7 @@ namespace MvcUI.Controllers
             {
                 IRecipient item = _recipientFactory.NewRecipient(recipient.RecipientId, recipient.CompanyName, recipient.Address, recipient.Account, recipient.CustomerServiceUrl, recipient.Active);
                 _recipientService.CreateRecepient(item);
+                TempData["ResultMessage"] = "Utworzono odbiorcę";
                 return RedirectToAction("Index");
             }
 

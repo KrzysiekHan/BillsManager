@@ -62,6 +62,12 @@
 @section scripts{
     <script>
         $(function () {
+
+            var message = '@ViewBag.msg';
+            if (message != '') {
+                toastr.success(message);
+            }
+            
             $('button').click(function () {
                 console.log(this.attributes.id.value);
                 $.ajax({
