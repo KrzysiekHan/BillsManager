@@ -52,7 +52,18 @@
         @*<a href="@Url.Action("Pay", "Bills", new { id = item.BillId })" class="btn btn-success">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
         </a>*@
-        <button class="btn btn-success" id="@item.BillId"> <span class="glyphicon glyphicon-ok"></span></button>
+        <button class="btn @(item.Paid ? "btn-success":"btn-danger")" id="@item.BillId">
+
+            @if (item.Paid)
+            {
+                <span class="glyphicon glyphicon-ok"></span>
+            }
+            else
+            {
+                <span class="glyphicon glyphicon-remove"></span>
+            }
+
+        </button>
     </td>
 </tr>
 }
@@ -74,7 +85,9 @@
 	                type:  "POST",
 	                url: "@(Html.Raw(Url.Action("PayBill", "Bills")))",
 	                data:  { id:this.attributes.id.value },
-	                success: function (recive) {}
+                    success: function (recive) {                        
+                        location.reload();
+                    }
                 })
             });
 

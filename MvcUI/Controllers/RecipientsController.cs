@@ -108,6 +108,7 @@ namespace MvcUI.Controllers
                 _recipientService.UpdateRecepient(
                     _recipientFactory.NewRecipient(recipient.RecipientId,recipient.CompanyName,recipient.Address,recipient.Account,recipient.CustomerServiceUrl,recipient.Active)
                     );
+                TempData["ResultMessage"] = "Zmiany zapisane";
                 return RedirectToAction("Index");
             }
             return View(recipient);
@@ -135,6 +136,7 @@ namespace MvcUI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             _recipientService.DeactivateRecipient(id);
+            TempData["ResultMessage"] = "Odbiorca usunięty";
             return RedirectToAction("Index");
         }
     }

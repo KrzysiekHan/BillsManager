@@ -37,6 +37,8 @@ namespace MvcUI.Models.Bill
         [Display(Name = "Okres płatności w miesiącach (0 - jednorazowa)")]
         public int Period { get; set; }
 
+        [Display(Name = "Opłacony")]
+        public bool Paid { get; set; }
 
         List<BillTypeVM> billTypes { get; set; }
 
@@ -64,6 +66,7 @@ namespace MvcUI.Models.Bill
             this.DueDate = bill.DueDate;
             this.Periodical = bill.Periodical;
             this.Period = bill.Period;
+            this.Paid = bill.Paid;
 
         }
     }

@@ -6,7 +6,8 @@
 <h2>Lista odbiorców</h2>
 
 <p>
-    <a href="@Url.Action("Create", "Recipients")" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj odbiorcę
+    <a href="@Url.Action("Create", "Recipients")" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj odbiorcę
     </a>
 </p>
 <table class="table table-striped">
@@ -56,3 +57,14 @@
     }
 
 </table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var message = '@ViewBag.msg';
+            if (message != '') {
+                toastr.success(message);
+            }
+        });
+    </script>
+}

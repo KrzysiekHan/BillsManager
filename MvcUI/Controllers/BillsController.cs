@@ -119,6 +119,7 @@ namespace MvcUI.Controllers
                 _billService.UpdateBill(
                     _billFactory.NewBill(bill.BillId,bill.RecipientId,bill.BillTypeId,bill.Description,bill.DueAmount,bill.DueDate,bill.Periodical,bill.Period,false)
                     );
+                TempData["ResultMessage"] = "Zmiany zapisane";
                 return RedirectToAction("Index");
             }
             return View(bill);
@@ -143,8 +144,7 @@ namespace MvcUI.Controllers
         public ActionResult PayBill(int id)
         {
             _billService.MarkBillAsPaid(id);
-            TempData["ResultMessage"] = "Rachunek oznaczony jako opłacony";
-            return RedirectToAction("Index"); 
+            return Json(new { message = "Rachunek oznaczony jako opłacony" },JsonRequestBehavior.AllowGet); 
         }
 
         // POST: Bills/Delete/5
