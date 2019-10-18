@@ -161,6 +161,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="lib\Chart.js\Chart.bundle.js" />
+    <Content Include="lib\Chart.js\Chart.bundle.min.js" />
+    <Content Include="lib\Chart.js\Chart.css" />
+    <Content Include="lib\Chart.js\Chart.js" />
+    <Content Include="lib\Chart.js\Chart.min.css" />
+    <Content Include="lib\Chart.js\Chart.min.js" />
     <Content Include="lib\toastr.js\toastr.css" />
     <Content Include="lib\toastr.js\toastr.min.css" />
     <Content Include="lib\toastr.js\toastr.min.js" />

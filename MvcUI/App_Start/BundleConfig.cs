@@ -22,11 +22,14 @@ namespace MvcUI
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/thirdParty").Include(
-                      "~/lib/toastr.js/toastr.min.js"));
+                      "~/lib/toastr.js/toastr.min.js",
+                      "~/lib/Chart.js/Chart.min.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/lib/toastr.js/toastr.css",
+                      "~/lib/Chart.js/Chart.min.css",
                       "~/Content/site.css"));
         }
     }
