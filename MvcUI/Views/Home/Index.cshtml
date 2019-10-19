@@ -194,8 +194,8 @@ window.chartColors = {
 				data: barChartData,
 				options: {
 					title: {
-						display: true,
-						text: 'Chart.js Bar Chart - Stacked'
+                        display: true,
+                        text: 'Rachunki' + Date.now()
 					},
 					tooltips: {
 						mode: 'index',
@@ -213,14 +213,6 @@ window.chartColors = {
 				}
 			});
 		};
-		document.getElementById('randomizeData').addEventListener('click', function() {
-			barChartData.datasets.forEach(function(dataset) {
-				dataset.data = dataset.data.map(function() {
-					return randomScalingFactor();
-				});
-			});
-			window.myBar.update();
-		});
 	
     </script>
     }
