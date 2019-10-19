@@ -8,6 +8,11 @@ namespace MvcUI.Models.Home
     public class ChartDataSet
     {
         public string Label { get; set; }
-        public List<int> Data { get; set; }
+        public List<BillHistory> Data { get; set; }
+    }
+
+    public class BillHistory
+    {
+       public List<decimal> PreviousMonthsHistory { get; set; }
     }
 }
