@@ -26,6 +26,7 @@ namespace MvcUI.Controllers
         {
             HomeViewModel homeViewModel = new HomeViewModel();
             homeViewModel.Months = GetLastMonthsNames(DateTime.Now);
+            homeViewModel.ChartDataSets = GetChartDataSets();
             return View();
         }
 
@@ -53,6 +54,22 @@ namespace MvcUI.Controllers
                 response.Add(month);
             }
             return response;
+        }
+
+        private List<ChartDataSet> GetChartDataSets(DateTime dt)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+               var bills = _billService.GetBillsForMonth(dt.AddMonths(i).Month);
+                decimal sum = 0M;
+                foreach (var item in bills)
+                {
+                    sum += item.DueAmount;
+                }
+            }
+
+
+            throw new NotImplementedException();
         }
     }
 }
