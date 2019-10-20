@@ -46,6 +46,7 @@ namespace MvcUI.Controllers
         private List<string> GetLastMonthsNames(DateTime dt)
         {
             List<string> response = new List<string>();
+<<<<<<< HEAD
             for (int i = 6; i >= 0; i--)
             {
                 string month = dt.AddMonths(-i).ToString("MMMM", CultureInfo.CreateSpecificCulture("pl"));
@@ -54,6 +55,10 @@ namespace MvcUI.Controllers
 
             
 
+=======
+            string fullMonthName = dt.ToString("MMMM", CultureInfo.CreateSpecificCulture("pl"));
+            response.Add(fullMonthName);
+>>>>>>> c59f40d6763b143e7750e42fbbcf2448bf494b15
             return response;
         }
     }
