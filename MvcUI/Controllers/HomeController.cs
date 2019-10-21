@@ -26,7 +26,7 @@ namespace MvcUI.Controllers
         {
             HomeViewModel homeViewModel = new HomeViewModel();
             homeViewModel.Months = GetLastMonthsNames(DateTime.Now);
-            homeViewModel.ChartDataSets = GetChartDataSets();
+            homeViewModel.ChartDataSets = GetChartDataSets(DateTime.Now);
             return View();
         }
 
@@ -58,13 +58,14 @@ namespace MvcUI.Controllers
 
         private List<ChartDataSet> GetChartDataSets(DateTime dt)
         {
+            List<ChartDataSet> ReturnList = new List<ChartDataSet>();
             for (int i = 0; i < 6; i++)
             {
                var bills = _billService.GetBillsForMonth(dt.AddMonths(i).Month);
-                decimal sum = 0M;
                 foreach (var item in bills)
                 {
-                    sum += item.DueAmount;
+                    ChartDataSet chartDataSet = new ChartDataSet();
+                    //chartDataSet.Data = new List<BillHistory>();
                 }
             }
 
