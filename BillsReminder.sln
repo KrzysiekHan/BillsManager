@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacModules", "AutofacMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcUI", "MvcUI\MvcUI.csproj", "{7E992C67-5B30-48FA-A778-5815D9ECE251}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{4B90A534-A09B-4EE3-80FA-F340D3723EF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7E992C67-5B30-48FA-A778-5815D9ECE251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E992C67-5B30-48FA-A778-5815D9ECE251}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E992C67-5B30-48FA-A778-5815D9ECE251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B90A534-A09B-4EE3-80FA-F340D3723EF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B90A534-A09B-4EE3-80FA-F340D3723EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B90A534-A09B-4EE3-80FA-F340D3723EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B90A534-A09B-4EE3-80FA-F340D3723EF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
