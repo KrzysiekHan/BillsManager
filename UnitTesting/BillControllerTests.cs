@@ -85,7 +85,7 @@ namespace UnitTesting
             //Mock<IBillRepository> mock = new Mock<IBillRepository>();
             //mock.Setup(m=>m.GetAll()).Returns(new Bill[] {
             //    new Bill()
-            //})
+            //}),
             Assert.Fail();
         }
 
