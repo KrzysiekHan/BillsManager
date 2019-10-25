@@ -47,7 +47,7 @@ namespace UnitTesting
         }
 
         [TestMethod]
-        public void Index_pass_bills_list()
+        public void IndexReturnsBillsListToView()
         {
             //arrange
             controller = new BillsController(mockBillService.Object, null, null);
@@ -58,7 +58,7 @@ namespace UnitTesting
         }
 
         [TestMethod]
-        public void Details_Without_Id_Returns_NotFound()
+        public void DetailsWithoutIdReturnsNotFound()
         {
             //arrange
             controller = new BillsController(null, null, null);
@@ -69,7 +69,7 @@ namespace UnitTesting
         }
 
         [TestMethod]
-        public void Details_Action_Returns_View_With_BillVM()
+        public void DetailsActionReturnsViewWithBillVM()
         {
             //arrange
             controller = new BillsController(mockBillService.Object, null, null);
@@ -80,6 +80,65 @@ namespace UnitTesting
         }
 
         [TestMethod]
+        public void CreateGetActionReturnsViewWithBillVMAndSelectLists()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void CreatePostActionWithValidModelCreatesBillAndRedirectToIndex()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void CreatePostActionWithInvalidModelReturnsCreateView()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void EditGetActionWithoutIdReturns404()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void EditGetActionWithIdReturnsEditViewWithProperVM()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void EditPostActionWithValidModelUpdatesBillAndRedirectsToIndexView()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void EditPostActionWithInvalidModelReturnsEditView()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void PayBillActionWithIdReturnsJsonResult()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void PayBillActionWithoutIdRedirectsToIndex()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void DeleteGetActionWithoutIdReturns404()
+        {
+            Assert.Fail();
+        }
+        [TestMethod]
         public void Mark_Bill_As_Paid()
         {
             //Mock<IBillRepository> mock = new Mock<IBillRepository>();
@@ -89,14 +148,6 @@ namespace UnitTesting
             Assert.Fail();
         }
 
-        [TestMethod]
-        public void Create_Bill_Redirect_To_Index()
-        {
-            //arrange 
-            //Mock<IBillRepository> mock = new Mock<IBillRepository>();
-            //BillsController controller = new BillsController(null,null,null);
-            //var target = controller.PayBill(1);
-            Assert.Fail();
-        }
+
     }
 }
