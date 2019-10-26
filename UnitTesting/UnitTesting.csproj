@@ -92,7 +92,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BillControllerTests.cs" />
+    <Compile Include="Controllers\BillControllerTests.cs" />
+    <Compile Include="Mocks\MockingFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDbContext.cs" />
   </ItemGroup>

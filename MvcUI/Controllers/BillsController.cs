@@ -83,7 +83,6 @@ namespace MvcUI.Controllers
                 TempData["ResultMessage"] = "Utworzono rachunek";
                 return RedirectToAction("Index");
             }
-
             return View(bill);
         }
 
