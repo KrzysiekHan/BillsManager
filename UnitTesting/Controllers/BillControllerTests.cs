@@ -33,6 +33,7 @@ namespace UnitTesting
             mockBillService.Setup(m => m.GetAllBills()).Returns(factory.CreateBillList());
             mockBillService.Setup(m => m.GetBill(1)).Returns(factory.CreateBill());
             mockBillService.Setup(m => m.GetBillTypes()).Returns(factory.CreateBillTypesList());
+            mockBillService.Setup(m => m.MarkBillAsPaid(1));
 
             mockRecipientService = new Mock<IRecipientService>();
             mockRecipientService.Setup(m => m.GetActiveRecipients()).Returns(factory.CreateRecipients());
@@ -174,20 +175,13 @@ namespace UnitTesting
         public void PayBillActionWithIdReturnsJsonResult()
         {
             //arrange
-
+            controller = new BillsController(mockBillService.Object, null, null);
             //act
+            var result = controller.PayBill(1);
             //assert
-            Assert.Fail();
+            Assert.IsInstanceOfType(result,typeof(JsonResult));
         }
 
-        [TestMethod]
-        public void PayBillActionWithoutIdRedirectsToIndex()
-        {
-            //arrange
-            //act
-            //assert
-            Assert.Fail();
-        }
 
         [TestMethod]
         public void DeleteGetActionWithoutIdReturns404()
