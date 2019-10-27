@@ -69,8 +69,7 @@ namespace MvcUI.Controllers
                 }
             }
 
-
-            throw new NotImplementedException();
+            return ReturnList;
         }
     }
 }
