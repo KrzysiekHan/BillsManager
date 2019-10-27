@@ -83,7 +83,6 @@ namespace MvcUI.Controllers
                 TempData["ResultMessage"] = "Utworzono rachunek";
                 return RedirectToAction("Index");
             }
-
             return View(bill);
         }
 
@@ -156,7 +155,7 @@ namespace MvcUI.Controllers
             return RedirectToAction("Index");
         }
 
-        private List<BillTypeVM> CreateTypesList()
+        public List<BillTypeVM> CreateTypesList()
         {
             IEnumerable<IBillType> billTypes = _billService.GetBillTypes();
             List<BillTypeVM> returnList = new List<BillTypeVM>();
@@ -171,7 +170,7 @@ namespace MvcUI.Controllers
             return returnList;
         }
 
-        private List<Recipient> CreateRecipientsList()
+        public List<Recipient> CreateRecipientsList()
         {
             IEnumerable<IRecipient> recipients = _recipientService.GetActiveRecipients();
             List<Recipient> returnList = new List<Recipient>();
