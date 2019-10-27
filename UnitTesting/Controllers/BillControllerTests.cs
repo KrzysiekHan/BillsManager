@@ -118,47 +118,63 @@ namespace UnitTesting
         }
 
         [TestMethod]
-        public void EditGetActionWithoutIdReturns404()
+        public void EditGetActionWithoutIdDoesntInvokeService()
         {
             //arrange
             controller = new BillsController(mockBillService.Object, mockBillFactory.Object, mockRecipientService.Object);
             //act
-            var result = controller.Edit(1);
+            int? nullValue = null;
+            var result = controller.Edit(nullValue);
             //assert
-            Assert.Fail();
+            mockBillService.Verify(m => m.GetBill(It.IsAny<int>()), Times.Never);          
         }
 
         [TestMethod]
         public void EditGetActionWithIdReturnsEditViewWithProperVM()
         {
             //arrange
+            controller = new BillsController(mockBillService.Object, mockBillFactory.Object, mockRecipientService.Object);
             //act
+            var result = controller.Edit(1) as ViewResult;
             //assert
-            Assert.Fail();
+            mockBillService.Verify(m => m.GetBill(It.IsAny<int>()), Times.Once);
+            Assert.IsInstanceOfType(result.Model, typeof(CreateBillVM));
         }
 
         [TestMethod]
         public void EditPostActionWithValidModelUpdatesBillAndRedirectsToIndexView()
         {
             //arrange
+            controller = new BillsController(mockBillService.Object,
+                                                mockBillFactory.Object,
+                                                null);
             //act
+            var result = controller.Edit(new CreateBillVM()) as RedirectToRouteResult;
             //assert
-            Assert.Fail();
+            mockBillService.Verify(m => m.UpdateBill(It.IsAny<IBill>()), Times.Once);
+            Assert.AreEqual(result.RouteValues["action"], "Index");
         }
 
         [TestMethod]
         public void EditPostActionWithInvalidModelReturnsEditView()
         {
             //arrange
+            controller = new BillsController(mockBillService.Object,
+                                                mockBillFactory.Object,
+                                                null);
+            controller.ModelState.AddModelError("test", "test");
             //act
+            var result = controller.Edit(new CreateBillVM()) as ViewResult;
             //assert
-            Assert.Fail();
+            Assert.IsInstanceOfType(result.Model, typeof(CreateBillVM));
+            mockBillService.Verify(m => m.UpdateBill(It.IsAny<IBill>()), Times.Never);
         }
 
         [TestMethod]
         public void PayBillActionWithIdReturnsJsonResult()
         {
             //arrange
+
             //act
             //assert
             Assert.Fail();
@@ -177,45 +193,47 @@ namespace UnitTesting
         public void DeleteGetActionWithoutIdReturns404()
         {
             //arrange
+            controller = new BillsController(mockBillService.Object, null, null);
+            int? nullvalue = null;
             //act
+            var result = controller.Delete(nullvalue);
             //assert
-            Assert.Fail();
+            mockBillService.Verify(m => m.GetBill(It.IsAny<int>()), Times.Never);
+            Assert.IsInstanceOfType(result, typeof(HttpStatusCodeResult));
         }
 
         [TestMethod]
         public void DeleteGetActionWithIdReturnsDeleteViewWithModel()
         {
             //arrange
+            controller = new BillsController(mockBillService.Object, null, null);
             //act
+            var result = controller.Delete(1) as ViewResult;
             //assert
-            Assert.Fail();
-        }
-
-        [TestMethod]
-        public void DeletePostActionRedirectsToIndex()
-        {
-            //arrange
-            //act
-            //assert
-            Assert.Fail();
+            mockBillService.Verify(m => m.GetBill(It.IsAny<int>()), Times.Once);
+            Assert.IsInstanceOfType(result.Model, typeof(CreateBillVM));
         }
 
         [TestMethod]
         public void CreateTypesListReturnsBillTypeVmList()
         {
             //arrange
+            controller = new BillsController(mockBillService.Object, null, null);
             //act
+            var result = controller.CreateTypesList();
             //assert
-            Assert.Fail();
+            Assert.AreEqual(result[0].Name, "Prąd");
         }
 
         [TestMethod]
         public void CreateRecipientsListReturnsRecipientList()
         {
             //arrange
+            controller = new BillsController(null, null, mockRecipientService.Object);
             //act
+            var result = controller.CreateRecipientsList();
             //assert
-            Assert.Fail();
+            Assert.AreEqual(result[0].CompanyName,"Tauron");
         }
         /*
                 [TestMethod]
