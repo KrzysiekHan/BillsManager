@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using log4net;
 using MvcUI.Common;
 using MvcUI.Models;
 using MvcUI.Models.Bill;
@@ -20,6 +21,8 @@ namespace MvcUI.Controllers
 {
     public class BillsController : Controller
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(BillsController));
+
         private readonly IBillService _billService;
         private readonly IBillFactory _billFactory;
         private readonly IRecipientService _recipientService;
@@ -40,6 +43,7 @@ namespace MvcUI.Controllers
                 list.Add(new CreateBillVM(item));
             }
             ViewBag.msg = TempData["ResultMessage"];
+            log.Info("log" + DateTime.Now.ToString());
             return View(list);
         }
 
