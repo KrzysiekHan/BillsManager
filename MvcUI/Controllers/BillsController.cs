@@ -168,6 +168,7 @@ namespace MvcUI.Controllers
                 });
             }
             return returnList;
+            
         }
 
         public List<Recipient> CreateRecipientsList()

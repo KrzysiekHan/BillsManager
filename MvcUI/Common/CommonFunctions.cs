@@ -12,5 +12,12 @@ namespace MvcUI.Common
             int idn = nulllable_value ?? default(int);
             return idn;
         }
+
+        public static string FirstCharToUpper(string input)
+        {
+            if (String.IsNullOrEmpty(input))
+                throw new ArgumentException("ARGH!");
+            return input.First().ToString().ToUpper() + String.Join("", input.Skip(1));
+        }
     }
 }
