@@ -25,6 +25,9 @@ namespace ViewModelLayer.Autofac
             builder.RegisterType<RecipientService>().As<IRecipientService>().InstancePerDependency();
             builder.RegisterType<RecipientFactory>().As<IRecipientFactory>().InstancePerDependency();
 
+            builder.RegisterType<LogService>().As<ILogService>().InstancePerDependency();
+            builder.RegisterType<LogFactory>().As<ILogFactory>().InstancePerDependency();
+
             builder.RegisterType<Mapping>().As<IMapping>().InstancePerDependency();
         }
     }

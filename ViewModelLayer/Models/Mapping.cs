@@ -30,6 +30,12 @@ namespace ViewModelLayer.Models
             return billType;
         }
 
+        public ILog DbLogToILog(DbAccess.Entities.Log entity)
+        {
+            ILog log = _factory.LogFactory.NewLog(entity.Id, entity.Date, entity.Thread, entity.Level, entity.Logger, entity.Message, entity.Exception);
+            return log;
+        }
+
         public IRecipient DbRecipientToIRecipient(DbAccess.Entities.Recipient entity)
         {
             IRecipient recipient = _factory.RecipientFactory.NewRecipient(entity.RecipientId, entity.CompanyName, entity.Address, entity.Account, entity.CustomerServiceUrl, entity.Active);

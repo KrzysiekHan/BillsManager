@@ -12,5 +12,6 @@ namespace ViewModelLayer.Interfaces
     {
         IBillFactory BillFactory { get; }
         IRecipientFactory RecipientFactory { get; }
+        ILogFactory LogFactory { get; }
     }
 }

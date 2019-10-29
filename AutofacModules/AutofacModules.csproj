@@ -60,7 +60,7 @@
       <Name>DbAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModelLayer\ViewModelLayer.csproj">
-      <Project>{5D1B04AA-2C92-41D7-B0E7-3A9E024781DA}</Project>
+      <Project>{5d1b04aa-2c92-41d7-b0e7-3a9e024781da}</Project>
       <Name>ViewModelLayer</Name>
     </ProjectReference>
   </ItemGroup>

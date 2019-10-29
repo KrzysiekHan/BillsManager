@@ -12,5 +12,6 @@ namespace ViewModelLayer.Interfaces
         IBill DbBillToIBill(DbAccess.Entities.Bill entity);
         IBillType DbBillTypeToIBillType(DbAccess.Entities.BillTypeDict entity);
         IRecipient DbRecipientToIRecipient(DbAccess.Entities.Recipient entity);
+        ILog DbLogToILog(DbAccess.Entities.Log entity);
     }
 }
