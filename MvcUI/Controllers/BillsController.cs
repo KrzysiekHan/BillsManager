@@ -21,7 +21,7 @@ namespace MvcUI.Controllers
 {
     public class BillsController : Controller
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(BillsController));
+        private static readonly log4net.ILog log = LogManager.GetLogger(typeof(BillsController));
 
         private readonly IBillService _billService;
         private readonly IBillFactory _billFactory;
@@ -34,7 +34,7 @@ namespace MvcUI.Controllers
         }
 
         // GET: Bills
-        public ActionResult Index(string message)
+        public ActionResult Index()
         {
             var BillsList = _billService.GetAllBills();
             List<CreateBillVM> list = new List<CreateBillVM>();

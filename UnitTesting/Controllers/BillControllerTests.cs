@@ -55,7 +55,7 @@ namespace UnitTesting
             //arrange
             controller = new BillsController(mockBillService.Object, null, null);
             //act
-            var result = ((controller.Index("test") as ViewResult).Model) as List<CreateBillVM>;
+            var result = ((controller.Index() as ViewResult).Model) as List<CreateBillVM>;
             //assert
             Assert.AreEqual(result.Count, 3);
         }
