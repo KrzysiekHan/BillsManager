@@ -143,6 +143,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\CommonFunctions.cs" />
     <Compile Include="Controllers\BillsController.cs" />
+    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecipientsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -249,6 +250,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\History\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

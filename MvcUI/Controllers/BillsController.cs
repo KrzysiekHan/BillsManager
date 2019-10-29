@@ -43,7 +43,7 @@ namespace MvcUI.Controllers
                 list.Add(new CreateBillVM(item));
             }
             ViewBag.msg = TempData["ResultMessage"];
-            log.Info("log" + DateTime.Now.ToString());
+            
             return View(list);
         }
 
@@ -85,6 +85,10 @@ namespace MvcUI.Controllers
                 IBill item =_billFactory.NewBill(bill.BillId, bill.RecipientId, bill.BillTypeId, bill.Description, bill.DueAmount, bill.DueDate, bill.Periodical, bill.Period, false);
                 _billService.CreateBill(item);
                 TempData["ResultMessage"] = "Utworzono rachunek";
+                log.Info("Utworzono rachunek " + 
+                    "Id:" + item.BillId + 
+                    ", Typ:"+item.BillType.Name.ToString() + 
+                    ", Odbiorca"+item.Recipient.CompanyName.ToString());
                 return RedirectToAction("Index");
             }
             return View(bill);
@@ -122,6 +126,8 @@ namespace MvcUI.Controllers
                 _billService.UpdateBill(
                     _billFactory.NewBill(bill.BillId,bill.RecipientId,bill.BillTypeId,bill.Description,bill.DueAmount,bill.DueDate,bill.Periodical,bill.Period,false)
                     );
+                log.Info("Edytowano rachunek " +
+                    "Id:" + bill.BillId );
                 TempData["ResultMessage"] = "Zmiany zapisane";
                 return RedirectToAction("Index");
             }
@@ -147,6 +153,8 @@ namespace MvcUI.Controllers
         public ActionResult PayBill(int id)
         {
             _billService.MarkBillAsPaid(id);
+            log.Info("Opłacono rachunek " +
+                    "Id:" + id);
             return Json(new { message = "Rachunek oznaczony jako opłacony" },JsonRequestBehavior.AllowGet); 
         }
 
@@ -156,6 +164,8 @@ namespace MvcUI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             _billService.RemoveBill(id);
+            log.Info("Usunięto rachunek " +
+        "Id:" + id);
             return RedirectToAction("Index");
         }
 

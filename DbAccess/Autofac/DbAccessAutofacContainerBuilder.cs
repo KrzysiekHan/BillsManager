@@ -16,6 +16,8 @@ namespace DbAccess.Autofac
             builder.RegisterType<BillRepository>().As<IBillRepository>().InstancePerDependency();
             builder.RegisterType<BillTypeDictRepository>().As<IBillTypeDictRepository>().InstancePerDependency();
             builder.RegisterType<RecipientRepository>().As<IRecipientRepository>().InstancePerDependency();
+            builder.RegisterType<LogRepository>().As<ILogRepository>().SingleInstance();
+
 
         }
     }

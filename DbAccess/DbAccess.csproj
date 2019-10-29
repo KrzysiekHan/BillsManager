@@ -63,9 +63,9 @@
     <Compile Include="Entities\BillTypeDict.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Recipient.cs" />
-    <Compile Include="Migrations\201910052122385_initial.cs" />
-    <Compile Include="Migrations\201910052122385_initial.Designer.cs">
-      <DependentUpon>201910052122385_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201910290624405_initial.cs" />
+    <Compile Include="Migrations\201910290624405_initial.Designer.cs">
+      <DependentUpon>201910290624405_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,7 +75,9 @@
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\Interfaces\IBillRepository.cs" />
     <Compile Include="Repository\Interfaces\IBillTypeDictRepository.cs" />
+    <Compile Include="Repository\Interfaces\ILogRepository.cs" />
     <Compile Include="Repository\Interfaces\IRecipientRepository.cs" />
+    <Compile Include="Repository\LogRepository.cs" />
     <Compile Include="Repository\RecipientRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,8 +85,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910052122385_initial.resx">
-      <DependentUpon>201910052122385_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910290624405_initial.resx">
+      <DependentUpon>201910290624405_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

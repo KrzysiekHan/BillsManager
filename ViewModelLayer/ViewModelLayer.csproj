@@ -56,6 +56,7 @@
     <Compile Include="Interfaces\Bill\IBillService.cs" />
     <Compile Include="Interfaces\Bill\IBillType.cs" />
     <Compile Include="Interfaces\IFactory.cs" />
+    <Compile Include="Interfaces\ILog.cs" />
     <Compile Include="Interfaces\IMapping.cs" />
     <Compile Include="Interfaces\Recipient\IRecipient.cs" />
     <Compile Include="Interfaces\Recipient\IRecipientFactory.cs" />
