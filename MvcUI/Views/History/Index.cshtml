@@ -1,0 +1,29 @@
+﻿@model MvcUI.Models.History.HistoryVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Data</th>
+        <th>Zdarzenie</th>
+    </tr>
+
+@foreach (var item in Model.logs) {
+    <tr>
+        <td>
+           @item.Date
+        </td>
+        <td>
+            @item.Message
+        </td>
+    </tr>
+}
+
+</table>

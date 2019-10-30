@@ -85,10 +85,8 @@ namespace MvcUI.Controllers
                 IBill item =_billFactory.NewBill(bill.BillId, bill.RecipientId, bill.BillTypeId, bill.Description, bill.DueAmount, bill.DueDate, bill.Periodical, bill.Period, false);
                 _billService.CreateBill(item);
                 TempData["ResultMessage"] = "Utworzono rachunek";
-                log.Info("Utworzono rachunek " + 
-                    "Id:" + item.BillId + 
-                    ", Typ:"+item.BillType.Name.ToString() + 
-                    ", Odbiorca"+item.Recipient.CompanyName.ToString());
+                var recipient = _recipientService.GetRecepient(bill.RecipientId);
+                log.Info("Utworzono rachunek " + "Id:" + bill.RecipientId + ", Odbiorca: "+ recipient.CompanyName + ", Kwota: " + bill.DueAmount);
                 return RedirectToAction("Index");
             }
             return View(bill);
