@@ -1,4 +1,5 @@
-﻿using MvcUI.Models.Home;
+﻿using MvcUI.Common;
+using MvcUI.Models.Home;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -53,23 +54,37 @@ namespace MvcUI.Controllers
                 string month = dt.AddMonths(-i).ToString("MMMM", CultureInfo.CreateSpecificCulture("pl"));
                 response.Add(month);
             }
+            foreach (var item in response)
+            {
+                CommonFunctions.FirstCharToUpper(item);
+            }
             return response;
         }
 
         private List<ChartDataSet> GetChartDataSets(DateTime dt)
         {
+
             List<ChartDataSet> ReturnList = new List<ChartDataSet>();
-            for (int i = 0; i < 6; i++)
-            {
-               var bills = _billService.GetBillsForMonth(dt.AddMonths(i).Month);
-                foreach (var item in bills)
-                {
-                    ChartDataSet chartDataSet = new ChartDataSet();
-                    //chartDataSet.Data = new List<BillHistory>();
-                }
-            }
 
             return ReturnList;
         }
+
+        public void GetLastSixBillsForRecipient(int RecipientId)
+        {
+
+
+        }
+    }
+
+    public class MonthData
+    {
+        public MonthData(IEnumerable<ViewModelLayer.Interfaces.IBill> bills)
+        {
+            foreach (var item in bills)
+            {
+                this.MonthlyBills.Add(item.Recipient.CompanyName.ToString(), item.DueAmount);
+            }
+        }
+        public Dictionary<string,decimal> MonthlyBills { get; set; }
     }
 }

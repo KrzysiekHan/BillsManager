@@ -9,6 +9,6 @@ namespace DbAccess.Repository.Interfaces
 {
     public interface ILogRepository : IGenericRepository<Log>
     {
-        
+        void DeleteAllLogs();
     }
 }

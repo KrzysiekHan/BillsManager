@@ -34,5 +34,12 @@ namespace MvcUI.Controllers
 
             return View(historyVM);
         }
+
+        [HttpPost]
+        public JsonResult DeleteLogs()
+        {
+            _logService.DeleteAllLogs();
+            return Json(new { message = "logs deleted" }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

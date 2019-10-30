@@ -9,5 +9,6 @@ namespace ViewModelLayer.Interfaces
     public interface ILogService
     {
         IEnumerable<ILog> GetAllLogs();
+        void DeleteAllLogs();
     }
 }

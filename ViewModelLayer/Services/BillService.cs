@@ -61,7 +61,6 @@ namespace ViewModelLayer.Services
             repo.Save();
         }
 
-
         public void UpdateBill(IBill bill)
         {
             DbAccess.Entities.Bill dbbill = this.repo.GetById(bill.BillId);

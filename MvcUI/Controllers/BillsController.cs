@@ -151,6 +151,7 @@ namespace MvcUI.Controllers
         public ActionResult PayBill(int id)
         {
             _billService.MarkBillAsPaid(id);
+
             log.Info("Opłacono rachunek " +
                     "Id:" + id);
             return Json(new { message = "Rachunek oznaczony jako opłacony" },JsonRequestBehavior.AllowGet); 

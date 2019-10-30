@@ -12,8 +12,5 @@ namespace MvcUI.Models.Home
         public List<CreateBillVM> Data { get; set; }
     }
 
-    public class BillHistory
-    {
-       public List<decimal> PreviousMonthsHistory { get; set; }
-    }
+
 }
