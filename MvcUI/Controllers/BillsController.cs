@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using log4net;
 using MvcUI.Common;
 using MvcUI.Models;
 using MvcUI.Models.Bill;
@@ -20,6 +21,8 @@ namespace MvcUI.Controllers
 {
     public class BillsController : Controller
     {
+        private static readonly log4net.ILog log = LogManager.GetLogger(typeof(BillsController));
+
         private readonly IBillService _billService;
         private readonly IBillFactory _billFactory;
         private readonly IRecipientService _recipientService;
@@ -31,7 +34,7 @@ namespace MvcUI.Controllers
         }
 
         // GET: Bills
-        public ActionResult Index(string message)
+        public ActionResult Index()
         {
             var BillsList = _billService.GetAllBills();
             List<CreateBillVM> list = new List<CreateBillVM>();
@@ -40,6 +43,7 @@ namespace MvcUI.Controllers
                 list.Add(new CreateBillVM(item));
             }
             ViewBag.msg = TempData["ResultMessage"];
+            
             return View(list);
         }
 
@@ -81,6 +85,8 @@ namespace MvcUI.Controllers
                 IBill item =_billFactory.NewBill(bill.BillId, bill.RecipientId, bill.BillTypeId, bill.Description, bill.DueAmount, bill.DueDate, bill.Periodical, bill.Period, false);
                 _billService.CreateBill(item);
                 TempData["ResultMessage"] = "Utworzono rachunek";
+                var recipient = _recipientService.GetRecepient(bill.RecipientId);
+                log.Info("Utworzono rachunek " + "Id:" + bill.RecipientId + ", Odbiorca: "+ recipient.CompanyName + ", Kwota: " + bill.DueAmount);
                 return RedirectToAction("Index");
             }
             return View(bill);
@@ -118,6 +124,8 @@ namespace MvcUI.Controllers
                 _billService.UpdateBill(
                     _billFactory.NewBill(bill.BillId,bill.RecipientId,bill.BillTypeId,bill.Description,bill.DueAmount,bill.DueDate,bill.Periodical,bill.Period,false)
                     );
+                log.Info("Edytowano rachunek " +
+                    "Id:" + bill.BillId );
                 TempData["ResultMessage"] = "Zmiany zapisane";
                 return RedirectToAction("Index");
             }
@@ -143,6 +151,9 @@ namespace MvcUI.Controllers
         public ActionResult PayBill(int id)
         {
             _billService.MarkBillAsPaid(id);
+
+            log.Info("Opłacono rachunek " +
+                    "Id:" + id);
             return Json(new { message = "Rachunek oznaczony jako opłacony" },JsonRequestBehavior.AllowGet); 
         }
 
@@ -152,6 +163,8 @@ namespace MvcUI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             _billService.RemoveBill(id);
+            log.Info("Usunięto rachunek " +
+        "Id:" + id);
             return RedirectToAction("Index");
         }
 

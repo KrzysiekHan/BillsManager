@@ -34,6 +34,9 @@
     <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,7 +60,7 @@
       <Name>DbAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModelLayer\ViewModelLayer.csproj">
-      <Project>{5D1B04AA-2C92-41D7-B0E7-3A9E024781DA}</Project>
+      <Project>{5d1b04aa-2c92-41d7-b0e7-3a9e024781da}</Project>
       <Name>ViewModelLayer</Name>
     </ProjectReference>
   </ItemGroup>

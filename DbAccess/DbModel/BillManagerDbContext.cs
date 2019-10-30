@@ -19,6 +19,6 @@ namespace DbAccess.DbModel
         public DbSet<Bill> Bills { get; set; }
         public DbSet<BillTypeDict> BillTypeDicts { get; set; }
         public DbSet<Recipient> Recipients { get; set; }
-
+        public DbSet<Log> Logs { get; set; }
     }
 }

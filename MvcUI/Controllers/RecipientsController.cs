@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using log4net;
 using MvcUI.Common;
 using MvcUI.Models;
 using ViewModelLayer.Interfaces;
@@ -16,6 +17,7 @@ namespace MvcUI.Controllers
 {
     public class RecipientsController : Controller
     {
+        private static readonly log4net.ILog log = LogManager.GetLogger(typeof(RecipientsController));
         private readonly IRecipientService _recipientService;
         private readonly IRecipientFactory _recipientFactory;
         private readonly IMapping _mapping;
@@ -73,6 +75,7 @@ namespace MvcUI.Controllers
             {
                 IRecipient item = _recipientFactory.NewRecipient(recipient.RecipientId, recipient.CompanyName, recipient.Address, recipient.Account, recipient.CustomerServiceUrl, recipient.Active);
                 _recipientService.CreateRecepient(item);
+                log.Info("Utworzono odbiorcę " + recipient.CompanyName + " " + recipient.Address);
                 TempData["ResultMessage"] = "Utworzono odbiorcę";
                 return RedirectToAction("Index");
             }
@@ -108,6 +111,7 @@ namespace MvcUI.Controllers
                 _recipientService.UpdateRecepient(
                     _recipientFactory.NewRecipient(recipient.RecipientId,recipient.CompanyName,recipient.Address,recipient.Account,recipient.CustomerServiceUrl,recipient.Active)
                     );
+                log.Info("Edytowano odbiorcę " + recipient.CompanyName + " " + recipient.Address);
                 TempData["ResultMessage"] = "Zmiany zapisane";
                 return RedirectToAction("Index");
             }
@@ -136,6 +140,8 @@ namespace MvcUI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             _recipientService.DeactivateRecipient(id);
+            var recipient = _recipientService.GetRecepient(id);
+            log.Info("Odbiorca usunięty " + recipient.CompanyName );
             TempData["ResultMessage"] = "Odbiorca usunięty";
             return RedirectToAction("Index");
         }

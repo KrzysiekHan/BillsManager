@@ -18,7 +18,7 @@ using ViewModelLayer.Interfaces.Bill;
 using ViewModelLayer.Interfaces.Recipient;
 using ViewModelLayer.Models;
 using ViewModelLayer.Services;
-using ViewModelLayer.ViewModels;
+
 
 namespace WpfApp
 {
@@ -27,8 +27,6 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly IBillService billService;
-        private readonly IRecipientService recipientService;
         public MainWindow()
         {
             SetupContainer();

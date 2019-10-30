@@ -1,0 +1,47 @@
+﻿@model MvcUI.Models.History.HistoryVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Historia operacji</h2>
+<p>
+    <a class="btn btn-danger" id="deleteBtn">
+        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Wyczyść historię
+    </a>
+</p>
+<table class="table" id="logsTable">
+    <tr>
+        <th>Data</th>
+        <th>Zdarzenie</th>
+    </tr>
+
+    @foreach (var item in Model.logs)
+    {
+        <tr>
+            <td>
+                @item.Date
+            </td>
+            <td>
+                @item.Message
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $('#deleteBtn').click(function () {
+            $.ajax({
+                type: "POST",
+                url: "@(Html.Raw(Url.Action("DeleteLogs", "History")))",
+                success: function () {
+                    toastr.success("Historia skasowana");
+                    $('#logsTable tr').remove();
+                }
+            })
+        });
+    </script>
+}
+

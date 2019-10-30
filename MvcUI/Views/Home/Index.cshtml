@@ -214,7 +214,7 @@
 
             // DEPRECATED
             window.randomScalingFactor = function () {
-                return Math.round(Samples.utils.rand(-100, 100));
+                return Math.round(Samples.utils.rand(0, 500));
             };
 
             // INITIALIZATION
@@ -275,7 +275,7 @@
                 options: {
                     title: {
                         display: true,
-                        text: 'Rachunki' + Date.now()
+                        text: 'Rachunki'
                     },
                     tooltips: {
                         mode: 'index',
