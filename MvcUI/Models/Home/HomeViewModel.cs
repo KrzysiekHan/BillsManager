@@ -7,7 +7,7 @@ namespace MvcUI.Models.Home
 {
     public class HomeViewModel
     {
-       public List<ChartDataSet> ChartDataSets { get; set; }
+       public BillsHistory BillsHalfYearHistory { get; set; }
        public List<string> Months { get; set; }
     }
 }

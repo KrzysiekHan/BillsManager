@@ -27,7 +27,7 @@ namespace MvcUI.Controllers
         {
             HomeViewModel homeViewModel = new HomeViewModel();
             homeViewModel.Months = GetLastMonthsNames(DateTime.Now);
-            homeViewModel.ChartDataSets = GetChartDataSets(DateTime.Now);
+            homeViewModel.BillsHalfYearHistory = new BillsHistory(_billService);
             return View();
         }
 
@@ -61,30 +61,6 @@ namespace MvcUI.Controllers
             return response;
         }
 
-        private List<ChartDataSet> GetChartDataSets(DateTime dt)
-        {
-
-            List<ChartDataSet> ReturnList = new List<ChartDataSet>();
-
-            return ReturnList;
-        }
-
-        public void GetLastSixBillsForRecipient(int RecipientId)
-        {
-
-
-        }
     }
 
-    public class MonthData
-    {
-        public MonthData(IEnumerable<ViewModelLayer.Interfaces.IBill> bills)
-        {
-            foreach (var item in bills)
-            {
-                this.MonthlyBills.Add(item.Recipient.CompanyName.ToString(), item.DueAmount);
-            }
-        }
-        public Dictionary<string,decimal> MonthlyBills { get; set; }
-    }
 }
