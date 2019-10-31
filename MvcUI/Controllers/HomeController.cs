@@ -31,20 +31,6 @@ namespace MvcUI.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         private List<string> GetLastMonthsNames(DateTime dt)
         {
             List<string> response = new List<string>();
